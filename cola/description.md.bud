@@ -1,0 +1,3 @@
+If [jq](https://stedolan.github.io/jq/) is installed, you can run an arbitrary
+**jq** filter over your property list and get the result back in either JSON
+or Plist or XML.

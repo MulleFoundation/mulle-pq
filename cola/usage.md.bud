@@ -1,0 +1,16 @@
+## Usage
+
+```
+Usage: mulle-plist-convert [options] ...
+
+   Convert between JSON, Plist, XML format.
+   Any arguments after the known options are interpreted to be jq commands.
+   jq will be invoked and give then parsed input. The result of the jq
+   command then replaces the input and finally output conversion takes place.
+
+   --jq                 : run input plist through jq
+   --out-format <value> : output format one of json,xml,(plist)
+   --in <value>         : input file (stdin)
+   --out <value>        : output file (stdout)
+   jq <value>           : ???
+```
