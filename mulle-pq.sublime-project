@@ -1,6 +1,6 @@
 {
-   "sublimegdb_workingdir": "${folder:kitchen/Debug/mulle-plist-convert}",
-   "sublimegdb_commandline": "mulle-gdb --interpreter=mi kitchen/Debug/mulle-plist-convert",
+   "sublimegdb_workingdir": "${folder:kitchen/Debug/mulle-pq}",
+   "sublimegdb_commandline": "mulle-gdb --interpreter=mi kitchen/Debug/mulle-pq",
    "folders":
    [
       {

@@ -1,13 +1,13 @@
 {
    project =
    {
-      description="⛪️ mulle-plist-convert JSON to plist to XML and back";
+      description="⛪️ mulle-pq a 'jq' for property lists";
       domain="github";
-      name="mulle-plist-convert";
-      username="MulleFoundation";
-      reponame="mulle-plist-convert";
-      homepage="https://github.com/MulleFoundation/mulle-plist-convert";
-      license="UNLICENSED"
+      name="mulle-pq";
+      user="MulleFoundation";
+      repo="mulle-pq";
+      homepage="https://github.com/MulleFoundation/mulle-pq";
+      license="BSD-3-License"
    };
    dependencies =
    (

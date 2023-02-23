@@ -142,6 +142,15 @@ int   _mulle_clioption_convert_to_FILE( struct mulle_clioption *o,
 }
 
 
+static int   mulle_compare_clioption( const void *_a, const void *_b)
+{
+   struct mulle_clioption  *a = (struct mulle_clioption *) _a;
+   struct mulle_clioption  *b = (struct mulle_clioption *) _b;
+
+   return( strcmp( a->name, b->name));
+}
+
+
 void   _mulle_clioptionparser_usagev( struct mulle_clioptionparser *parser,
                                       char *format,
                                       va_list va)
@@ -151,6 +160,8 @@ void   _mulle_clioptionparser_usagev( struct mulle_clioptionparser *parser,
    int                      rval;
    struct mulle_clioption   *o;
    const char               *s;
+   char                     **sorted;
+   int                      n;
 
    if( parser->usage)
    {
@@ -184,17 +195,28 @@ void   _mulle_clioptionparser_usagev( struct mulle_clioptionparser *parser,
          fprintf( stderr, "%s\n", parser->usage_text);
    }
 
-   for( o = parser->options; o->name; o++)
+   for( n = 0, o = parser->options; o->name; o++, n++)
    {
-      len = (int) strlen( o->name);
-      if( len > max)
-         max = len;
+      if( ! _mulle_clioption_is_alias( o))
+      {
+         len = (int) strlen( o->name);
+         if( len > max)
+            max = len;
+      }
    }
 
    if( max)
    {
+      qsort( parser->options,
+             n,
+             sizeof( struct mulle_clioption),
+             mulle_compare_clioption);
+
       for( o = parser->options; o->name; o++)
-         _mulle_clioption_usage( o, max);
+      {
+         if( ! _mulle_clioption_is_alias( o))
+            _mulle_clioption_usage( o, max);
+      }
       fprintf( stderr, "\n");
    }
 
@@ -224,7 +246,7 @@ int   _mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
 {
    int                     i;
    struct mulle_clioption  *o;
-   const char              *alias;
+   const char              *name;
 
    for( i = 0; i < argc; i++)
    {
@@ -241,6 +263,7 @@ int   _mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
          if( strcmp( argv[ i], o->name))
             continue;
 
+retry:
          switch( o->has_arg)
          {
          case 0 :
@@ -257,8 +280,8 @@ int   _mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
             break;
 
          case 2:
-            alias = o->userinfo;
-            if( ! alias)
+            name = o->userinfo;
+            if( ! name)
             {
                errno = EINVAL;
                return( -1);
@@ -266,7 +289,7 @@ int   _mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
 
             for( o = p->options; o->name; o++)
             {
-               if( ! strcmp( o->name, alias))
+               if( ! strcmp( o->name, name))
                   break;
             }
 
@@ -275,6 +298,7 @@ int   _mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
                errno = ENOENT;
                return( -1);
             }
+            goto retry;
          }
 
          if( o->converter)

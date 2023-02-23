@@ -5,7 +5,7 @@ Files changes will be lost with the next `mulle-sde reflect` execution.
 ## Header files in `reflect`
 
 
-### `mulle-plist-convert-import.h`
+### `mulle-pq-import.h`
 
 Objective-C dependency headers that this project uses are imported via
 this file. Dependencies are managed with `mulle-sde dependency`
@@ -15,7 +15,7 @@ Use `mulle-sde dependency add --objc --public <dependency>` to have the
 respective `#import <dependency/depedency.h>` command show up.
 
 
-### `mulle-plist-convert-include.h`
+### `mulle-pq-include.h`
 
 C dependency and library headers that this project uses are imported via
 this file. Dependencies are managed with `mulle-sde dependency`.
@@ -26,7 +26,7 @@ Use `mulle-sde dependency add --c --public <dependency>` to have the
 respective `#include <dependency/depedency.h>` command show up.
 
 
-### `mulle-plist-convert-import-private.h`
+### `mulle-pq-import-private.h`
 
 Objective-C dependency headers that this project uses privately are imported
 via this file.
@@ -35,7 +35,7 @@ Use `mulle-sde dependency add --objc --private <dependency>` to have the
 respective `#import <dependency/depedency.h>` command show up.
 
 
-### `mulle-plist-convert-include-private.h`
+### `mulle-pq-include-private.h`
 
 C dependency and library headers that this project uses privately are imported
 via this file.

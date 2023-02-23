@@ -1,5 +1,5 @@
-#ifndef mulle_plist_convert_include_h__
-#define mulle_plist_convert_include_h__
+#ifndef mulle_pq_include_h__
+#define mulle_pq_include_h__
 
 /* This is a central include file to keep dependencies out of the library
    C files. It is usally included by .h files only.
@@ -8,7 +8,7 @@
    be moved to other projects and don't need to be edited. Also less typing...
 
    Therefore it is important that this file is called "include.h" and
-   not "mulle-plist-convert-include.h" to keep the #include statements in the
+   not "mulle-pq-include.h" to keep the #include statements in the
    library code uniform.
 
    The C-compiler will pick up the nearest one.
@@ -19,22 +19,22 @@
    sourcetree, then you don't need it.
  */
 
-#include "_mulle-plist-convert-include.h"
+#include "_mulle-pq-include.h"
 
-#ifndef MULLE_PLIST_CONVERT_GLOBAL
-# ifdef MULLE_PLIST_CONVERT_BUILD
-#  define MULLE_PLIST_CONVERT_GLOBAL    MULLE_C_GLOBAL
+#ifndef MULLE_PQ_GLOBAL
+# ifdef MULLE_PQ_BUILD
+#  define MULLE_PQ_GLOBAL    MULLE_C_GLOBAL
 # else
-#  if defined( MULLE_PLIST_CONVERT_INCLUDE_DYNAMIC) || (defined( MULLE_INCLUDE_DYNAMIC) && ! defined( MULLE_PLIST_CONVERT_INCLUDE_STATIC))
-#   define MULLE_PLIST_CONVERT_GLOBAL   MULLE_C_GLOBAL
+#  if defined( MULLE_PQ_INCLUDE_DYNAMIC) || (defined( MULLE_INCLUDE_DYNAMIC) && ! defined( MULLE_PQ_INCLUDE_STATIC))
+#   define MULLE_PQ_GLOBAL   MULLE_C_GLOBAL
 #  else
-#   define MULLE_PLIST_CONVERT_GLOBAL   extern
+#   define MULLE_PQ_GLOBAL   extern
 #  endif
 # endif
 #endif
 
 /* You can add some more include statements here */
 
-#include "mulle-plist-convert-version.h"
+#include "mulle-pq-version.h"
 
 #endif

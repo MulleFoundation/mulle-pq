@@ -62,6 +62,13 @@ static inline void   mulle_clioption_init( struct mulle_clioption *o,
    o->userinfo      = userinfo;
 }
 
+
+static inline int  _mulle_clioption_is_alias( struct mulle_clioption *o)
+{
+   return( o->has_arg == 2);
+}
+
+
 #define mulle_clioption_data( comment, name, has_arg, config_offset, converter, userinfo) \
    { (comment), (name), (has_arg), (config_offset), (converter), (userinfo) }
 

@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-#include "mulle-plist-convert-version.h"
+#include "mulle-pq-version.h"
 #include "mulle-clioption.h"
 
 
@@ -36,9 +36,9 @@ int   option_plist_format_conversion( struct mulle_clioption *o,
 }
 
 
-
 struct config
 {
+   enum plist_format   in_format;
    enum plist_format   out_format;
    BOOL                jq;
    char                *in_filename;
@@ -49,15 +49,24 @@ struct config
 static inline void   _config_init( struct config *config)
 {
    memset( config, 0, sizeof( *config));
+   config->jq         = 1;
    config->out_format = plist;
 }
 
 
-struct mulle_clioption  options[] =
+// don't const it, because usage will sort it
+static struct mulle_clioption  options[] =
 {
-   mulle_clioption_yes_data( "run input plist through jq",
-                             "--jq",
+   mulle_clioption_no_data( "don't run input plist through jq",
+                             "--no-jq",
                              offsetof( struct config, jq)),
+   {
+      "input format one of json,xml,plist (auto)",
+      "--in-format",
+      YES,
+      offsetof( struct config, in_format),
+      option_plist_format_conversion
+   },
    {
       "output format one of json,xml,(plist)",
       "--out-format",
@@ -71,7 +80,8 @@ struct mulle_clioption  options[] =
    mulle_clioption_string_argument_data( "output file (stdout)",
                                          "--out",
                                          offsetof( struct config, out_filename)),
-   mulle_clioption_alias( "jq", "--jq"),
+   mulle_clioption_alias( "-i","--in"),
+   mulle_clioption_alias( "-o", "--out"),
    { 0 }
 };
 
@@ -82,9 +92,10 @@ static char  usage_text[] =
 "\n"
 "   Convert between JSON, Plist, XML format.\n"
 "   Any arguments after the known options are interpreted to be jq arguments.\n"
-"   jq will be invoked and give then parsed input. The result of the jq\n"
-"   command then replaces the input and finally output conversion takes place.\n"
-"\n";
+"   jq will be invoked and given the parsed input. The result of the jq\n"
+"   command then will undergo output conversion.\n"
+"\n"
+"Options:\n";
 
 
 
@@ -101,7 +112,7 @@ int  main( int argc, char *argv[])
    NSMutableArray                 *arguments;
    NSData                         *convertedData;
    int                            i;
-   id                             plist;
+   id                             propertyList;
 
 #if defined( DEBUG)
    if( mulle_objc_global_check_universe( __MULLE_OBJC_UNIVERSENAME__) != mulle_objc_universe_is_ok)
@@ -119,31 +130,53 @@ int  main( int argc, char *argv[])
       mulle_clioptionparser_usage( &parser, "Superflous argument \"%s\" ...", argv[ i]);
 
    if( config.in_filename && strcmp( config.in_filename, "-"))
+   {
       input = [NSFileHandle fileHandleForReadingAtPath:@( config.in_filename)];
+      if( ! input)
+      {
+         mulle_fprintf( stderr, "could not read \"%s\"\n", config.in_filename);
+         exit( 1);
+      }
+   }
    else
       input = [NSFileHandle fileHandleWithStandardInput];
-
-   data        = [input readDataToEndOfFile];
-   plistFormat = 0;
-   plist       = [NSPropertyListSerialization propertyListWithData:data
-                                                           options:0
-                                                            format:&plistFormat
-                                                             error:&error];
-   if( ! plist)
+   data = [input readDataToEndOfFile];
+   if( ! [data length])
    {
-      mulle_fprintf( stderr, "input could not be parsed: %@\n", error ? error : @"???");
+      mulle_fprintf( stderr, "empty property list is useless\n");
+      exit( 1);
+   }
+
+   switch( config.in_format)
+   {
+   case json  : plistFormat = MullePropertyListJSONFormat; break;
+   case xml   : plistFormat = NSPropertyListXMLFormat_v1_0; break;
+   case plist : plistFormat = NSPropertyListOpenStepFormat; break;
+   default    : plistFormat = 0; break;
+   }
+   propertyList = [NSPropertyListSerialization propertyListWithData:data
+                                                            options:0
+                                                             format:&plistFormat
+                                                              error:&error];
+   if( ! propertyList)
+   {
+      mulle_fprintf( stderr,
+                     "input could not be parsed: %@\n",
+                     error ? error : @"???");
       exit( 1);
    }
 
    if( config.jq)
    {
-      convertedData = [NSPropertyListSerialization dataWithPropertyList:plist
+      convertedData = [NSPropertyListSerialization dataWithPropertyList:propertyList
                                                                  format:MullePropertyListJSONFormat
                                                                 options:0
                                                                   error:&error];
       if( ! convertedData)
       {
-         mulle_fprintf( stderr, "Could not be converted to intermediate JSON: %@\n", error ? error : @"???");
+         mulle_fprintf( stderr,
+                        "Could not be converted to intermediate JSON: %@\n",
+                        error ? error : @"???");
          exit( 1);
       }
 
@@ -162,14 +195,16 @@ int  main( int argc, char *argv[])
          exit( 1);
       }
 
-      plistFormat = MullePropertyListJSONFormat;
-      plist       = [NSPropertyListSerialization propertyListWithData:filteredData
-                                                              options:0
-                                                               format:&plistFormat
-                                                                error:&error];
-      if( ! plist)
+      plistFormat  = MullePropertyListJSONFormat;
+      propertyList = [NSPropertyListSerialization propertyListWithData:filteredData
+                                                               options:0
+                                                                format:&plistFormat
+                                                                 error:&error];
+      if( ! propertyList)
       {
-         mulle_fprintf( stderr, "jq output could not be parsed as JSON: %@\n", error ? error : @"???");
+         mulle_fprintf( stderr,
+                        "jq output could not be parsed as JSON: %@\n",
+                        error ? error : @"???");
          exit( 1);
       }
    }
@@ -183,13 +218,15 @@ int  main( int argc, char *argv[])
 
    if( config.jq || plistFormat != MullePropertyListJSONFormat)
    {
-      convertedData = [NSPropertyListSerialization dataWithPropertyList:plist
+      convertedData = [NSPropertyListSerialization dataWithPropertyList:propertyList
                                                                  format:plistFormat
                                                                 options:0
                                                                   error:&error];
       if( ! convertedData)
       {
-         mulle_fprintf( stderr, "output could not be converted: %@\n", error ? error : @"???");
+         mulle_fprintf( stderr,
+                        "output could not be converted: %@\n",
+                        error ? error : @"???");
          exit( 1);
       }
    }

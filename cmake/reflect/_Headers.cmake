@@ -20,8 +20,8 @@ src/reflect
 # contents selected with patternfile ??-header--private-generated-headers
 #
 set( PRIVATE_GENERATED_HEADERS
-src/reflect/_mulle-plist-convert-import-private.h
-src/reflect/_mulle-plist-convert-include-private.h
+src/reflect/_mulle-pq-import-private.h
+src/reflect/_mulle-pq-include-private.h
 )
 
 #
@@ -37,10 +37,10 @@ src/import-private.h
 # contents selected with patternfile ??-header--public-generated-headers
 #
 set( PUBLIC_GENERATED_HEADERS
-src/reflect/_mulle-plist-convert-export.h
-src/reflect/_mulle-plist-convert-import.h
-src/reflect/_mulle-plist-convert-include.h
-src/reflect/_mulle-plist-convert-provide.h
+src/reflect/_mulle-pq-export.h
+src/reflect/_mulle-pq-import.h
+src/reflect/_mulle-pq-include.h
+src/reflect/_mulle-pq-provide.h
 )
 
 #
@@ -57,6 +57,6 @@ src/import.h
 #
 set( PUBLIC_HEADERS
 src/mulle-clioption.h
-src/mulle-plist-convert-version.h
+src/mulle-pq-version.h
 )
 

@@ -17,14 +17,14 @@
  * # endif
  * #endif
  */
-#ifndef MULLE_PLIST_CONVERT_GLOBAL
-# ifdef MULLE_PLIST_CONVERT_BUILD
-#  define MULLE_PLIST_CONVERT_GLOBAL    MULLE_C_GLOBAL
+#ifndef MULLE_PQ_GLOBAL
+# ifdef MULLE_PQ_BUILD
+#  define MULLE_PQ_GLOBAL    MULLE_C_GLOBAL
 # else
-#  if defined( MULLE_PLIST_CONVERT_INCLUDE_DYNAMIC) || (defined( MULLE_INCLUDE_DYNAMIC) && ! defined( MULLE_PLIST_CONVERT_INCLUDE_STATIC))
-#   define MULLE_PLIST_CONVERT_GLOBAL   MULLE_C_GLOBAL
+#  if defined( MULLE_PQ_INCLUDE_DYNAMIC) || (defined( MULLE_INCLUDE_DYNAMIC) && ! defined( MULLE_PQ_INCLUDE_STATIC))
+#   define MULLE_PQ_GLOBAL   MULLE_C_GLOBAL
 #  else
-#   define MULLE_PLIST_CONVERT_GLOBAL   extern
+#   define MULLE_PQ_GLOBAL   extern
 #  endif
 # endif
 #endif
@@ -35,6 +35,6 @@
    Here the prefix is harmless and serves disambiguation. If you have no
    sourcetree, then you don't need it.
  */
-#import "_mulle-plist-convert-import-private.h"
+#import "_mulle-pq-import-private.h"
 
 /* You can add some more import statements here */

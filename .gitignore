@@ -1,3 +1,4 @@
 *.workspace
 .gdb_history
 x.json
+*-workspace

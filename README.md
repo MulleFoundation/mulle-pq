@@ -1,6 +1,6 @@
-# mulle-plist-convert
+# mulle-pq
 
-#### ⛪️ mulle-plist-convert JSON to plist to XML and back
+#### ⛪️ mulle-pq a 'jq' for property lists
 
 If [jq](https://stedolan.github.io/jq/) is installed, you can run an arbitrary
 **jq** filter over your property list and get the result back in either JSON
@@ -8,7 +8,7 @@ or Plist or XML.
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/mulle-plist-convert.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/mulle-plist-convert/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/mulle-plist-convert/actions)| [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/mulle-pq.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/mulle-pq/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/mulle-pq/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
 
@@ -37,18 +37,18 @@ Usage: mulle-plist-convert [options] ...
 
 ## Add
 
-Use [mulle-sde](//github.com/mulle-sde) to add mulle-plist-convert to your project:
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-pq to your project:
 
 ``` sh
-mulle-sde add github:MulleFoundation/mulle-plist-convert
+mulle-sde add github:MulleFoundation/mulle-pq
 ```
 
-To only add the sources of mulle-plist-convert with dependency
+To only add the sources of mulle-pq with dependency
 sources use [clib](https://github.com/clibs/clib):
 
 
 ``` sh
-clib install --out src/MulleFoundation MulleFoundation/mulle-plist-convert
+clib install --out src/MulleFoundation MulleFoundation/mulle-pq
 ```
 
 Add `-isystem src/MulleFoundation` to your `CFLAGS` and compile all the sources that were downloaded with your project.
@@ -58,11 +58,11 @@ Add `-isystem src/MulleFoundation` to your `CFLAGS` and compile all the sources 
 
 ### Install with mulle-sde
 
-Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-plist-convert and all dependencies:
+Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-pq and all dependencies:
 
 ``` sh
 mulle-sde install --prefix /usr/local \
-   https://github.com/MulleFoundation/mulle-plist-convert/archive/latest.tar.gz
+   https://github.com/MulleFoundation/mulle-pq/archive/latest.tar.gz
 ```
 
 ### Manual Installation
@@ -76,7 +76,7 @@ Install the requirements:
 | [MulleObjCExpatFoundation](https://github.com/MulleFoundation/MulleObjCExpatFoundation)             | 👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat
 | [MulleObjCJSMNFoundation](https://github.com/MulleWeb/MulleObjCJSMNFoundation)             | 🌼 JSON support for mulle-objc
 
-Install **mulle-plist-convert** into `/usr/local` with [cmake](https://cmake.org):
+Install **mulle-pq** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
 cmake -B build \
