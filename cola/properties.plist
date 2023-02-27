@@ -7,29 +7,41 @@
       user="MulleFoundation";
       repo="mulle-pq";
       homepage="https://github.com/MulleFoundation/mulle-pq";
-      license="BSD-3-License"
+      license="UNLICENSED"
    };
    dependencies =
    (
       {
-         name="MulleFoundation";
-         url="https://github.com/MulleFoundation/MulleFoundation";
          description="💍 Umbrella library for the MulleFoundation";
+         domain="github";
+         name="MulleFoundation";
+         repo="MulleFoundation";
+         url="https://github.com/MulleFoundation/MulleFoundation";
+         user="MulleFoundation";
       },
       {
-         name="MulleFoundation-startup";
-         url="https://github.com/MulleFoundation/MulleFoundation-startup";
          description="▶️ Startup library for MulleFoundation";
+         domain="github";
+         name="MulleFoundation-startup";
+         repo="MulleFoundation-startup";
+         url="https://github.com/MulleFoundation/MulleFoundation-startup";
+         user="MulleFoundation";
       },
       {
-         name="MulleObjCExpatFoundation";
-         url="https://github.com/MulleFoundation/MulleObjCExpatFoundation";
          description="👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat";
+         domain="github";
+         name="MulleObjCExpatFoundation";
+         repo="MulleObjCExpatFoundation";
+         url="https://github.com/MulleFoundation/MulleObjCExpatFoundation";
+         user="MulleFoundation";
       },
       {
-         name="MulleObjCJSMNFoundation";
-         url="https://github.com/MulleWeb/MulleObjCJSMNFoundation";
          description="🌼 JSON support for mulle-objc";
+         domain="github";
+         name="MulleObjCJSMNFoundation";
+         repo="MulleObjCJSMNFoundation";
+         url="https://github.com/MulleWeb/MulleObjCJSMNFoundation";
+         user="MulleWeb";
       }
    )
 }

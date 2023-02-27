@@ -255,7 +255,7 @@ int   _mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
           ! strcmp( argv[ i], "help"))
       {
          _mulle_clioptionparser_usage( p, NULL);
-         return( 0);
+         return( -1);
       }
 
       for( o = p->options; o->name; o++)
@@ -275,7 +275,7 @@ retry:
                _mulle_clioptionparser_usage( p,
                                              "missing argument for \"%s\"",
                                              argv[ --i]);
-               return( 0);
+               return( -1);
             }
             break;
 
@@ -308,7 +308,7 @@ retry:
                _mulle_clioptionparser_usage( p,
                                              "wrong kind of argument for \"%s\"",
                                              argv[ --i]);
-               return( 0);
+               return( -1);
             }
          }
          else
@@ -342,5 +342,5 @@ int   mulle_clioptionparser_argc_argv( struct mulle_clioptionparser *p,
       return( -1);
 
    rval =_mulle_clioptionparser_argc_argv( p, argc - 1, &argv[ 1]);
-   return( rval <= 0 ? rval : rval + 1); // adjust argc
+   return( rval < 0 ? rval : rval + 1); // adjust argc
 }

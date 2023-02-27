@@ -41,6 +41,7 @@ struct config
    enum plist_format   in_format;
    enum plist_format   out_format;
    BOOL                jq;
+   BOOL                lf;
    char                *in_filename;
    char                *out_filename;
 };
@@ -50,6 +51,7 @@ static inline void   _config_init( struct config *config)
 {
    memset( config, 0, sizeof( *config));
    config->jq         = 1;
+   config->lf         = 1;
    config->out_format = plist;
 }
 
@@ -57,6 +59,9 @@ static inline void   _config_init( struct config *config)
 // don't const it, because usage will sort it
 static struct mulle_clioption  options[] =
 {
+   mulle_clioption_no_data( "don't append a linefeed to the output",
+                             "--no-lf",
+                             offsetof( struct config, lf)),
    mulle_clioption_no_data( "don't run input plist through jq",
                              "--no-jq",
                              offsetof( struct config, jq)),
@@ -104,6 +109,7 @@ int  main( int argc, char *argv[])
    struct config                  config;
    struct mulle_clioptionparser   parser;
    NSError                        *error;
+   NSDictionary                   *info;
    NSPropertyListFormat           plistFormat;
    NSFileHandle                   *input;
    NSFileHandle                   *output;
@@ -113,6 +119,7 @@ int  main( int argc, char *argv[])
    NSData                         *convertedData;
    int                            i;
    id                             propertyList;
+   id                             exception;
 
 #if defined( DEBUG)
    if( mulle_objc_global_check_universe( __MULLE_OBJC_UNIVERSENAME__) != mulle_objc_universe_is_ok)
@@ -124,8 +131,9 @@ int  main( int argc, char *argv[])
    mulle_clioptionparser_set_argv0( &parser, argv[ 0]);
 
    i = mulle_clioptionparser_argc_argv( &parser, argc, (const char **) argv);
-   if( i == 0)
+   if( i < 0)
       return( 1);
+
    if( i != argc && ! config.jq)
       mulle_clioptionparser_usage( &parser, "Superflous argument \"%s\" ...", argv[ i]);
 
@@ -184,17 +192,18 @@ int  main( int argc, char *argv[])
       while( i < argc)
          [arguments addObject:@( argv[ i++])];
 
-      filteredData = [NSTask mulleSystem:arguments
-                        workingDirectory:nil
-                      standardOutputData:convertedData];
-
-      // assume jq said enough
-      if( ! filteredData)
+      info = [NSTask mulleDataSystemCallWithArguments:arguments
+                                     workingDirectory:nil
+                                    standardInputData:convertedData
+                                              options:~0];
+      exception = [info objectForKey:NSTaskExceptionKey];
+      if( exception)
       {
-         mulle_fprintf( stderr, "jq failed\n");
+         mulle_fprintf( stderr, "jq failed (%@)\n", exception);
          exit( 1);
       }
 
+      filteredData = [info objectForKey:NSTaskStandardOutputDataKey];
       plistFormat  = MullePropertyListJSONFormat;
       propertyList = [NSPropertyListSerialization propertyListWithData:filteredData
                                                                options:0
@@ -236,6 +245,16 @@ int  main( int argc, char *argv[])
    else
       output = [NSFileHandle fileHandleWithStandardOutput];
    [output writeData:convertedData];
+   if( config.lf)
+   {
+#ifdef _WIN32
+      [output mulleWriteBytes:"\r\n"
+                       length:2];
+#else
+      [output mulleWriteBytes:"\n"
+                       length:1];
+#endif
+   }
    [output closeFile];
 
    return( 0);

@@ -8,28 +8,40 @@ or Plist or XML.
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/mulle-pq.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/mulle-pq/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/mulle-pq/actions)| [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-pq.svg?branch=release) [![Build Status](https://github.com//mulle-pq/workflows/CI/badge.svg?branch=release)](//github.com//mulle-pq/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
 
 ## Usage
 
+
 ```
-Usage: mulle-plist-convert [options] ...
+Usage: mulle-pq [options] ...
 
    Convert between JSON, Plist, XML format.
-   Any arguments after the known options are interpreted to be jq commands.
-   jq will be invoked and give then parsed input. The result of the jq
-   command then replaces the input and finally output conversion takes place.
+   Any arguments after the known options are interpreted to be jq arguments.
+   jq will be invoked and given the parsed input. The result of the jq
+   command then will undergo output conversion.
 
-   --jq                 : run input plist through jq
-   --out-format <value> : output format one of json,xml,(plist)
+Options:
    --in <value>         : input file (stdin)
+   --in-format <value>  : input format one of json,xml,plist (auto)
+   --no-jq              : don't run input plist through jq
+   --no-lf              : don't append a linefeed to the output
    --out <value>        : output file (stdout)
-   jq <value>           : ???
+   --out-format <value> : output format one of json,xml,(plist)
+
 ```
 
 
+## Requirements
+
+|   Requirement         | Release Version  | Description
+|-----------------------|------------------|---------------
+| [MulleFoundation](https://github.com/MulleFoundation/MulleFoundation) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 💍 Umbrella library for the MulleFoundation
+| [MulleFoundation-startup](https://github.com/MulleFoundation/MulleFoundation-startup) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | ▶️ Startup library for MulleFoundation
+| [MulleObjCExpatFoundation](https://github.com/MulleFoundation/MulleObjCExpatFoundation) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat
+| [MulleObjCJSMNFoundation](https://github.com/MulleWeb/MulleObjCJSMNFoundation) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 🌼 JSON support for mulle-objc
 
 ### You are here
 
@@ -42,17 +54,6 @@ Use [mulle-sde](//github.com/mulle-sde) to add mulle-pq to your project:
 ``` sh
 mulle-sde add github:MulleFoundation/mulle-pq
 ```
-
-To only add the sources of mulle-pq with dependency
-sources use [clib](https://github.com/clibs/clib):
-
-
-``` sh
-clib install --out src/MulleFoundation MulleFoundation/mulle-pq
-```
-
-Add `-isystem src/MulleFoundation` to your `CFLAGS` and compile all the sources that were downloaded with your project.
-
 
 ## Install
 
