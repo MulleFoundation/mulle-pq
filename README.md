@@ -6,14 +6,10 @@ If [jq](https://stedolan.github.io/jq/) is installed, you can run an arbitrary
 **jq** filter over your property list and get the result back in either JSON
 or Plist or XML.
 
-| Release Version                                       | Release Notes
-|-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-pq.svg?branch=release) [![Build Status](https://github.com//mulle-pq/workflows/CI/badge.svg?branch=release)](//github.com//mulle-pq/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
 
 ## Usage
-
 
 ```
 Usage: mulle-pq [options] ...
@@ -31,7 +27,9 @@ Options:
    --out <value>        : output file (stdout)
    --out-format <value> : output format one of json,xml,(plist)
 
+
 ```
+
 
 
 ## Requirements
@@ -54,6 +52,7 @@ Use [mulle-sde](//github.com/mulle-sde) to add mulle-pq to your project:
 ``` sh
 mulle-sde add github:MulleFoundation/mulle-pq
 ```
+
 
 ## Install
 
@@ -88,8 +87,11 @@ cmake --build build --config Release &&
 cmake --install build --config Release
 ```
 
+
 ## Author
 
 [Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+
+
 
 

@@ -41,7 +41,7 @@ if( IDE_SUPPORT)
          # mulle_sde_craft_craftorder: just rebuild. Can be useful if "clean all"
          #                             failed.
          add_custom_target( mulle_sde_craft_craftorder
-            COMMENT "Craft dependency folder (without previous clean)"
+            COMMENT "Craft dependency folder"
             COMMAND "${MULLE_SDE}" craft --build-type "${CMAKE_BUILD_TYPE}" craftorder
             VERBATIM
          )
@@ -55,17 +55,15 @@ if( IDE_SUPPORT)
          set_target_properties( mulle_sde_reflect PROPERTIES EXCLUDE_FROM_ALL ON)
 
          add_custom_target( mulle_sde_clean_all
-            COMMENT "Clean and Craft dependency folder"
-            COMMAND "${MULLE_SDE}" clean all
-            COMMAND "${MULLE_SDE}" craft --build-type "${CMAKE_BUILD_TYPE}" craftorder
+            COMMENT "Clean all and craft dependency folder"
+            COMMAND "${MULLE_SDE}" craft -C
             VERBATIM
          )
          set_target_properties( mulle_sde_clean_all PROPERTIES EXCLUDE_FROM_ALL ON)
 
          add_custom_target( mulle_sde_clean_tidy
-            COMMENT "Clean, Refetch and Craft dependency folder"
-            COMMAND "${MULLE_SDE}" clean tidy
-            COMMAND "${MULLE_SDE}" -v craft --build-type "${CMAKE_BUILD_TYPE}" craftorder
+            COMMENT "Clean stash and craft dependency folder"
+            COMMAND "${MULLE_SDE}" craft -g
             VERBATIM
          )
          set_target_properties( mulle_sde_clean_tidy PROPERTIES EXCLUDE_FROM_ALL ON)

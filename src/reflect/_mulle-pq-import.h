@@ -46,3 +46,10 @@
 //    remove for platform: `mulle-sde dependency mark MulleObjCJSMNFoundation no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
 #import <MulleObjCJSMNFoundation/MulleObjCJSMNFoundation.h>   // MulleObjCJSMNFoundation
+
+#ifdef __has_include
+# if __has_include( "_mulle-pq-include.h")
+#  include "_mulle-pq-include.h"
+# endif
+#endif
+

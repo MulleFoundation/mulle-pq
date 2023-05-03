@@ -1,0 +1,8 @@
+## Add
+
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-pq to your project:
+
+``` sh
+mulle-sde add github:MulleFoundation/mulle-pq
+```
+
