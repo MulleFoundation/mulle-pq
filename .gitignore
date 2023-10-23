@@ -2,3 +2,5 @@
 .gdb_history
 x.json
 *-workspace
+wilted/
+*.old
