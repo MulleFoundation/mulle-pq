@@ -9,5 +9,12 @@
  *
  *      mulle-sde environment set MULLE_MATCH_TO_C_RUN DISABLE
  */
+#ifndef mulle_pq_provide_h__
+#define mulle_pq_provide_h__
+
+
 #include "mulle-clioption.h"
 #include "mulle-pq-version.h"
+
+
+#endif
