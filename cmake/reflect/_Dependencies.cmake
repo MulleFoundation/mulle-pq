@@ -94,7 +94,7 @@ endif()
 
 
 #
-# Generated from sourcetree: 86F449FA-93D6-44FD-B2A4-4A1B858E8CAE;MulleObjCExpatFoundation;no-singlephase;
+# Generated from sourcetree: 8B442907-7303-4379-A70F-615191DB8A0A;MulleObjCExpatFoundation;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjCExpatFoundation no-link`
 # Disable for this platform: `mulle-sourcetree mark MulleObjCExpatFoundation no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark MulleObjCExpatFoundation no-cmake-sdk-<name>`
@@ -263,40 +263,40 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark MulleFoundation-startup no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark MulleFoundation-startup no-cmake-sdk-<name>`
 #
-if( NOT MULLE_FOUNDATION_STARTUP_LIBRARY)
-   find_library( MULLE_FOUNDATION_STARTUP_LIBRARY NAMES
+if( NOT MULLE_FOUNDATION__STARTUP_LIBRARY)
+   find_library( MULLE_FOUNDATION__STARTUP_LIBRARY NAMES
       ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation-startup${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
       ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation-startup${CMAKE_STATIC_LIBRARY_SUFFIX}
       NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
    )
-   if( NOT MULLE_FOUNDATION_STARTUP_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
-      find_library( MULLE_FOUNDATION_STARTUP_LIBRARY NAMES
+   if( NOT MULLE_FOUNDATION__STARTUP_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+      find_library( MULLE_FOUNDATION__STARTUP_LIBRARY NAMES
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation-startup${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation-startup${CMAKE_STATIC_LIBRARY_SUFFIX}
       )
    endif()
-   message( STATUS "MULLE_FOUNDATION_STARTUP_LIBRARY is ${MULLE_FOUNDATION_STARTUP_LIBRARY}")
+   message( STATUS "MULLE_FOUNDATION__STARTUP_LIBRARY is ${MULLE_FOUNDATION__STARTUP_LIBRARY}")
    #
    # The order looks ascending, but due to the way this file is read
    # it ends up being descending, which is what we need.
    #
-   if( MULLE_FOUNDATION_STARTUP_LIBRARY)
+   if( MULLE_FOUNDATION__STARTUP_LIBRARY)
       #
-      # Add MULLE_FOUNDATION_STARTUP_LIBRARY to STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES list.
+      # Add MULLE_FOUNDATION__STARTUP_LIBRARY to STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES list.
       # Disable with: `mulle-sourcetree mark MulleFoundation-startup no-cmake-add`
       #
-      list( APPEND STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_FOUNDATION_STARTUP_LIBRARY})
+      list( APPEND STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_FOUNDATION__STARTUP_LIBRARY})
       #
       # Inherit information from dependency.
       # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark MulleFoundation-startup no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
-      get_filename_component( _TMP_MULLE_FOUNDATION_STARTUP_ROOT "${MULLE_FOUNDATION_STARTUP_LIBRARY}" DIRECTORY)
-      get_filename_component( _TMP_MULLE_FOUNDATION_STARTUP_ROOT "${_TMP_MULLE_FOUNDATION_STARTUP_ROOT}" DIRECTORY)
+      get_filename_component( _TMP_MULLE_FOUNDATION__STARTUP_ROOT "${MULLE_FOUNDATION__STARTUP_LIBRARY}" DIRECTORY)
+      get_filename_component( _TMP_MULLE_FOUNDATION__STARTUP_ROOT "${_TMP_MULLE_FOUNDATION__STARTUP_ROOT}" DIRECTORY)
       #
    else()
       # Disable with: `mulle-sourcetree mark MulleFoundation-startup no-require-link`
-      message( FATAL_ERROR "MULLE_FOUNDATION_STARTUP_LIBRARY was not found")
+      message( FATAL_ERROR "MULLE_FOUNDATION__STARTUP_LIBRARY was not found")
    endif()
 endif()

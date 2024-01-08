@@ -1,0 +1,33 @@
+{
+   "name" : "mulle-pq",
+   "version" : "0.0.2",
+   "description" : "⛪️ mulle-pq a 'jq' for property lists",
+   "keywords" : [],
+   "license" : "BSD-3-Clause",
+   "repo" : "mulle-nat/mulle-pq",
+   "src" : [
+      "src/generic/import-private.h",
+      "src/generic/import.h",
+      "src/generic/include-private.h",
+      "src/generic/include.h",
+      "src/import-private.h",
+      "src/import.h",
+      "src/main.m",
+      "src/mulle-clioption.c",
+      "src/mulle-clioption.h",
+      "src/mulle-pq-version.h",
+      "src/reflect/objc-loader.inc",
+      "src/reflect/_mulle-pq-export.h",
+      "src/reflect/_mulle-pq-import-private.h",
+      "src/reflect/_mulle-pq-import.h",
+      "src/reflect/_mulle-pq-include-private.h",
+      "src/reflect/_mulle-pq-include.h",
+      "src/reflect/_mulle-pq-provide.h"
+   ],
+   "dependencies" : {
+      "MulleFoundation/MulleFoundation": "*",
+      "MulleFoundation/MulleObjCExpatFoundation": "*",
+      "MulleWeb/MulleObjCJSMNFoundation": "*",
+      "MulleFoundation/MulleFoundation-startup": "*"
+   }
+}
