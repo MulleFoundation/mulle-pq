@@ -7,7 +7,7 @@
       user="MulleFoundation";
       repo="mulle-pq";
       homepage="https://github.com/MulleFoundation/mulle-pq";
-      license="UNLICENSED"
+      license="BSD-3-Clause"
    };
    dependencies =
    (

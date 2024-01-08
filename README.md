@@ -27,7 +27,6 @@ Options:
    --out <value>        : output file (stdout)
    --out-format <value> : output format one of json,xml,(plist)
 
-
 ```
 
 
