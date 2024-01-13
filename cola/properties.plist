@@ -6,8 +6,8 @@
       name="mulle-pq";
       user="MulleFoundation";
       repo="mulle-pq";
-      homepage="https://github.com/MulleFoundation/mulle-pq";
-      license="BSD-3-Clause"
+      homepage="https://github.com/mulle-nat/mulle-pq";
+      license="BSD-3-Clause";
    };
    dependencies =
    (
@@ -17,14 +17,6 @@
          name="MulleFoundation";
          repo="MulleFoundation";
          url="https://github.com/MulleFoundation/MulleFoundation";
-         user="MulleFoundation";
-      },
-      {
-         description="▶️ Startup library for MulleFoundation";
-         domain="github";
-         name="MulleFoundation-startup";
-         repo="MulleFoundation-startup";
-         url="https://github.com/MulleFoundation/MulleFoundation-startup";
          user="MulleFoundation";
       },
       {
@@ -42,6 +34,14 @@
          repo="MulleObjCJSMNFoundation";
          url="https://github.com/MulleWeb/MulleObjCJSMNFoundation";
          user="MulleWeb";
+      },
+      {
+         description="▶️  Startup code for the MulleFoundation";
+         domain="github";
+         name="MulleFoundation-startup";
+         repo="MulleFoundation-startup";
+         url="https://github.com/MulleFoundation/MulleFoundation-startup";
+         user="MulleFoundation";
       }
-   )
+   );
 }
