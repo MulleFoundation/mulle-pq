@@ -160,7 +160,6 @@ void   _mulle_clioptionparser_usagev( struct mulle_clioptionparser *parser,
    int                      rval;
    struct mulle_clioption   *o;
    const char               *s;
-   char                     **sorted;
    int                      n;
 
    if( parser->usage)
