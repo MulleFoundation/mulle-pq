@@ -5,7 +5,7 @@
  *  You can maintain this file with `mulle-project-version`
  *  version:  major, minor, patch
  */
-#define MULLE__PQ_VERSION  ((0UL << 20) | (0 << 8) | 3)
+#define MULLE__PQ_VERSION  ((0UL << 20) | (0 << 8) | 4)
 
 
 static inline unsigned int   mulle_pq_get_version_major( void)
