@@ -12,21 +12,15 @@ or Plist or XML.
 ## Usage
 
 ```
-Usage: mulle-pq [options] ...
-
-   Convert between JSON, Plist, XML format.
-   Any arguments after the known options are interpreted to be jq arguments.
-   jq will be invoked and given the parsed input. The result of the jq
-   command then will undergo output conversion.
-
-Options:
-   --in <value>         : input file (stdin)
-   --in-format <value>  : input format one of json,xml,plist (auto)
-   --no-jq              : don't run input plist through jq
-   --no-lf              : don't append a linefeed to the output
-   --out <value>        : output file (stdout)
-   --out-format <value> : output format one of json,xml,(plist)
-
+task 141249 could not launch /home/src/srcO/mulle-objc/MulleObjC/src/protocol/NSCopying.m:45:17: warning: method definition for 'copiedInstance' not found [-Wincomplete-implementation]
+   45 | @implementation NSObject ( NSCopying)
+      |                 ^
+/home/src/srcO/mulle-objc/MulleObjC/src/class/NSObject.h:266:1: note: method 'copiedInstance' declared here
+  266 | - (id) copiedInstance;
+      | ^
+[0;36m[1mRun your executable:[0m
+[1m   /home/nat/.mulle/var/mulle-pq-e4020b0ca178/kitchen/Debug/mulle-pq[0m
+/home/nat/.mulle/var/mulle-pq-e4020b0ca178/kitchen/Debug/mulle-pq (2:No such file or directory)
 
 ```
 
