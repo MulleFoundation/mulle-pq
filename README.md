@@ -21,7 +21,6 @@ task 141249 could not launch /home/src/srcO/mulle-objc/MulleObjC/src/protocol/NS
 [0;36m[1mRun your executable:[0m
 [1m   /home/nat/.mulle/var/mulle-pq-e4020b0ca178/kitchen/Debug/mulle-pq[0m
 /home/nat/.mulle/var/mulle-pq-e4020b0ca178/kitchen/Debug/mulle-pq (2:No such file or directory)
-
 ```
 
 
