@@ -1,6 +1,6 @@
 {
    "name" : "mulle-pq",
-   "version" : "0.0.2",
+   "version" : "0.0.5",
    "description" : "⛪️ mulle-pq a 'jq' for property lists",
    "keywords" : [],
    "license" : "BSD-3-Clause",

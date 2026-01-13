@@ -7,7 +7,7 @@
 #
 cmake_minimum_required( VERSION 3.13)
 
-project( mulle-pq VERSION 0.0.4 LANGUAGES C)
+project( mulle-pq VERSION 0.0.5 LANGUAGES C)
 
 
 set( MULLE_PROJECT_TYPE "Executable")
