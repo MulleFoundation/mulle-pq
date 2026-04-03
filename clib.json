@@ -16,7 +16,7 @@
       "src/mulle-clioption.c",
       "src/mulle-clioption.h",
       "src/mulle-pq-version.h",
-      "src/reflect/objc-loader.inc",
+      "src/reflect/objc-deps.inc",
       "src/reflect/_mulle-pq-export.h",
       "src/reflect/_mulle-pq-import-private.h",
       "src/reflect/_mulle-pq-import.h",

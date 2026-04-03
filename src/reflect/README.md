@@ -44,7 +44,7 @@ Use `mulle-sde dependency add --c --private <dependency>` to have the
 respective `#include <dependency/depedency.h>` command show up.
 
 
-### `objc-loader.inc`
+### `objc-deps.inc`
 
 This file contains Objective-C dependency information of this library.
 It's updated during a build with [mulle-objc-list](//github.com/mulle-objc/mulle-objc-list).
