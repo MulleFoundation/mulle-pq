@@ -4,7 +4,7 @@
    "description" : "⛪️ mulle-pq a 'jq' for property lists",
    "keywords" : [],
    "license" : "BSD-3-Clause",
-   "repo" : "mulle-nat/mulle-pq",
+   "repo" : "MulleFoundation/mulle-pq",
    "src" : [
       "src/generic/import-private.h",
       "src/generic/import.h",

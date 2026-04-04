@@ -1,19 +1,9 @@
 ### 0.0.5
 
-Various small improvements
 
-### 0.0.4
 
-Various small improvements
 
-### 0.0.3
 
-Various small improvements
 
-### 0.0.2
-
-* Various small improvements
-
-### 0.0.1
-
-* add --no-lf option (and append lf by default)
+* reflect now emits objc-deps.inc (renamed from objc-loader.inc) as the Objective-C dependency list used by build tooling
+* updated dependency toggle wording in `_mulle-pq-import.h` to use "toggle objc" for clearer instructions

@@ -1,6 +1,7 @@
 {
    project =
    {
+version="0.0.5";
       description="⛪️ mulle-pq a 'jq' for property lists";
       domain="github";
       name="mulle-pq";
