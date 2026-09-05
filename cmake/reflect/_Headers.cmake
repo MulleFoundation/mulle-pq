@@ -58,6 +58,5 @@ src/import.h
 set( PUBLIC_HEADERS
 src/mulle-clioption.h
 src/mulle-pq-version.h
-src/reflect/_mulle-pq-versioncheck.h
 )
 
