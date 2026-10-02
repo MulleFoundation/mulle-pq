@@ -55,3 +55,9 @@ build-*/
 .kiro/
 TODO.md
 REVIEW.md
+.ackrc
+.vscode/
+*.orig
+.touch
+*.*-workspace
+research/
