@@ -257,9 +257,9 @@ export MULLE_OBJC_EXPAT_FOUNDATION_NODETYPE="git"
 
 
 #
-# MulleObjCExpatFoundation url: ${MULLE_OBJC_EXPAT_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCExpatFoundation/archive/${MULLE_TAG}.tar.gz}
+# MulleObjCExpatFoundation url: ${MULLE_OBJC_EXPAT_FOUNDATION_URL:-https://github.com/MulleWeb/MulleObjCExpatFoundation/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_OBJC_EXPAT_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCExpatFoundation.git"
+export MULLE_OBJC_EXPAT_FOUNDATION_URL="https://github.com/MulleWeb/MulleObjCExpatFoundation.git"
 
 
 #

@@ -26,7 +26,7 @@
    ],
    "dependencies" : {
       "MulleFoundation/MulleFoundation": "*",
-      "MulleFoundation/MulleObjCExpatFoundation": "*",
+      "MulleWeb/MulleObjCExpatFoundation": "*",
       "MulleWeb/MulleObjCJSMNFoundation": "*",
       "MulleFoundation/MulleFoundation-startup": "*"
    }
