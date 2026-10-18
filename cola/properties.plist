@@ -1,19 +1,20 @@
 {
    project =
    {
-version="0.0.8";
       description="⛪️ mulle-pq a 'jq' for property lists";
       domain="github";
+      language="c";
+      dialect="objc";
       name="mulle-pq";
       user="MulleFoundation";
       repo="mulle-pq";
-      homepage="https://github.com/mulle-nat/mulle-pq";
+      homepage="https://github.com/MulleFoundation/mulle-pq";
       license="BSD-3-Clause";
    };
    dependencies =
    (
       {
-         description="💍 Umbrella library for the MulleFoundation";
+         description="🧱 MulleFoundation amalgamates Foundations projects";
          domain="github";
          name="MulleFoundation";
          repo="MulleFoundation";
@@ -25,8 +26,8 @@ version="0.0.8";
          domain="github";
          name="MulleObjCExpatFoundation";
          repo="MulleObjCExpatFoundation";
-         url="https://github.com/MulleFoundation/MulleObjCExpatFoundation";
-         user="MulleFoundation";
+         url="https://github.com/MulleWeb/MulleObjCExpatFoundation";
+         user="MulleWeb";
       },
       {
          description="🌼 JSON support for mulle-objc";
